@@ -1,0 +1,38 @@
+<% include ../partials/headerSignin %>
+<div class="" style="margin-left: 10px; margin-right:50px ">
+  <div class="col s12">
+    <%if(items.length > 0){%>
+    <table class="table">
+      <thead>
+        <tr>
+          <th style="width: 1%; text-align:center">Name</th>
+          <th style="width: 1%; text-align:center">Project Name</th>
+
+          <th style="width: 1%; text-align:center">Description</th>
+          <th solspan="2" style="width: 1%; text-align:center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%items.forEach(function(item,index){%>
+        <tr>
+          <td style="width: 49% ;text-align:center"><%= item.author%></td>
+          <td style="width: 20%"><%= item.p_name%></td>
+          <td style="width: 20%"><%= item.p_desc%></td>
+          <td solspan="2" style="width: 20%; text-align:center">
+            <a href="/download/<%= item.id %>" class="btn btn-sm">download</a>
+
+          <td solspan="2" style="width: 20%; text-align:center">
+              <a href="/events/update/<%= item.id %>" class="btn btn-success btn-sm">Update</a>
+          <td solspan="2" style="width: 20%; text-align:center">
+          <a href="/events/delete/<%= item.id%>" class="btn btn-danger btn-sm">Delete</a>           
+        </th>
+        </tr>
+        <%});%>
+      </tbody>
+    </table>
+    <%}else{%>
+        <p><strong>There is no record</strong></p>
+        <%}%>
+  </div>
+</div>
+<% include ../partials/footer %>

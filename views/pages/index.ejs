@@ -1,0 +1,54 @@
+<% include ../partials/headerSignin %>
+<div style="margin-left: 20px; margin-right:50px ;margin-top:50px">
+  <div class="col s12">
+    <a href="/events/add" class="btn btn-success btn-sm">Add New Project</a>
+  </div>
+
+</div>
+<form method="POST" action="http://localhost:4000/search">
+<div class="form-group row">
+  <label for="date_added" class="col-2 col-form-label"></label>
+  <div class="col-10">
+    <input type="text" name="search" value="" />
+  </div>
+</div>
+<div class="form-group row">
+  <label for="submit" class="col-2 col-form-label" style="color: #ffffff"
+    >Submit</label
+  >
+  <div class="col-10">
+    <input
+      type="submit"
+      name="submit"
+      value="Search"
+      class="btn btn-primary btn-sm"
+    />
+  </div>
+</div>
+</form>
+<br />
+<div class="" style="margin-left: 10px; margin-right:50px ">
+  <div class="col s12">
+    <%if(items.length > 0){%>
+    <table class="table">
+      <thead>
+        <tr>   <th style="width: 1%; text-align:center">Project Name</th>
+<th style="width: 1%; text-align:center">Date Added</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%items.forEach(function(item,index){%>
+        <tr>
+          <td style="width: 20%"><a href="/details/<%= item.id %>"><%= item.p_name%></a></td>
+          <td style="width: 20%"><%= item.date_added%></td>
+        </th>
+        </tr>
+        <%});%>
+      </tbody>
+    </table>
+    <%}else{%>
+        <p><strong>There is no record</strong></p>
+        <%}%>
+  </div>
+</div>
+<% include ../partials/footer %>
